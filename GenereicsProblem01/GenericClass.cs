@@ -8,8 +8,9 @@ namespace GenereicsProblem01
 {
     class GenericClass
     {
-        public static int MaxNumber(int firstNum, int secondNum, int thirdNum)
+        public static double MaxNumber(double firstNum, double secondNum, double thirdNum)
         {
+            //comparision of three double/float numbers
             if ((firstNum.CompareTo(secondNum) > 0 && firstNum.CompareTo(thirdNum) > 0) || (firstNum.CompareTo(secondNum) >= 0 && firstNum.CompareTo(thirdNum) > 0) ||
                     (firstNum.CompareTo(secondNum) > 0 && firstNum.CompareTo(thirdNum) >= 0))
             {

@@ -6,7 +6,8 @@ namespace GenereicsProblem01
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(GenericClass.MaxNumber(100, 30, 30));
+            //calling the generic class method
+            Console.WriteLine(GenericClass.MaxNumber(100.256, 30.256, 130.0232));
         }
     }
 }
