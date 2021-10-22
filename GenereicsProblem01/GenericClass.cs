@@ -8,39 +8,30 @@ namespace GenereicsProblem01
 {
     class GenericClass<T> where T: IComparable                   //Tcomparable is used to identifu the compare to class method
     {
-        private T firstNum, secondNum, thirdNum;                //declaring instance variables
-
-        public GenericClass(T firstNum, T secondNum, T thirdNum)       //declaring the class consstructor
+        public T[] value;                                      //array creating
+        
+        public GenericClass(T[] value)                          
         {
-            this.firstNum = firstNum;
-            this.secondNum = secondNum;
-            this.thirdNum = thirdNum;
-        }
-        public static T MaxOf(T firstNum, T secondNum,T thirdNum)              //declaring the max of method. statci so that we can use it without creating an objecct in this class
-        {
-            //comparision of three values
-
-            if ((firstNum.CompareTo(secondNum) > 0 && firstNum.CompareTo(thirdNum) > 0) || (firstNum.CompareTo(secondNum) >= 0 && firstNum.CompareTo(thirdNum) > 0) ||
-                    (firstNum.CompareTo(secondNum) > 0 && firstNum.CompareTo(thirdNum) >= 0))
-            {
-                return firstNum;
-
-            }
-            else if ((secondNum.CompareTo(firstNum)>0 && secondNum.CompareTo(thirdNum)>0) || (secondNum.CompareTo(firstNum) >= 0 && secondNum.CompareTo(thirdNum) > 0) ||
-                (secondNum.CompareTo(firstNum) > 0 && secondNum.CompareTo(thirdNum) >= 0))
-            {
-                return secondNum;
-            }
-            else
-            {
-                return thirdNum;
-            }          
+            this.value = value;
         }
 
-        public T MaxValue()                        //another method that applies the constructor and thenpronts or returns the value
+        //below method returns the sorted value of the array.
+        public T[] Sort(T[] values)                                
         {
-            T max = GenericClass<T>.MaxOf(this.firstNum, this.secondNum, this.thirdNum);
-            return max;
+            Array.Sort(values);
+            return values;
+        }
+
+        public T MaxValue(params T[] value)                   //'params is used to make the array dynamic. ie no fixed size needs to be specified beforehand
+        {
+            var valueSorted = Sort(value);
+            return valueSorted[valueSorted.Length - 1];       //returning the last element of the sorted array which is sorted in ascending order
+        }
+
+        public void PrintMax()
+        {
+            var max = MaxValue(this.value);
+            Console.WriteLine("Maximum value is :" + max);
         }
     }
 }
